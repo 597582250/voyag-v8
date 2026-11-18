@@ -315,7 +315,7 @@ impl VoyagPredictor {
     }
 
     /// Predict intents and relations for a full vehicle state (must contain utterance).
-    pub fn predict_state(&self, state: &Value) -> Result<Value, Box<dyn Error>> {
+    pub fn predict_state(&mut self, state: &Value) -> Result<Value, Box<dyn Error>> {
         let state_ids = self.state_ids(state)?;
         let rows = self.head_cache.len();
         let mut row_ids = Vec::with_capacity(rows);
@@ -469,7 +469,7 @@ impl VoyagPredictor {
     }
 
     /// Predict for an utterance, merged over the neutral vehicle state.
-    pub fn predict(&self, utterance: &str, state: Option<&Value>) -> Result<Value, Box<dyn Error>> {
+    pub fn predict(&mut self, utterance: &str, state: Option<&Value>) -> Result<Value, Box<dyn Error>> {
         let mut merged = neutral_state();
         if let Some(extra) = state {
             let obj = merged.as_object_mut().expect("neutral state is an object");

@@ -13,7 +13,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         eprintln!("usage: voyag-cli <model-dir> <utterance>");
         process::exit(2);
     }
-    let predictor = VoyagPredictor::create(&args[1])?;
+    let mut predictor = VoyagPredictor::create(&args[1])?;
     let result = predictor.predict(&args[2], None)?;
     println!("{}", serde_json::to_string_pretty(&result)?);
     Ok(())
