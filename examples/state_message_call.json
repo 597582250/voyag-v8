@@ -1,0 +1,17 @@
+{
+  "utterance": "读取消息，同时回电给张工",
+  "speed_kmh": 35,
+  "acc": "on",
+  "window_state": "open",
+  "hvac_state": "on",
+  "hvac_temperature_c": 21,
+  "media_state": "idle",
+  "seat_heat": "off",
+  "light_state": "off",
+  "phone_call": "idle",
+  "nav_active": false,
+  "battery_soc": 0.55,
+  "gps_valid": true,
+  "dtc": [],
+  "warning": []
+}

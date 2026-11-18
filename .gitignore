@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Node / TypeScript
+bindings/typescript/node_modules/
+bindings/typescript/dist/
+
+# .NET
+bindings/dotnet/bin/
+bindings/dotnet/obj/
+
+# Java / Maven
+bindings/java/target/
+
+# Rust
+bindings/rust/target/
+
+# Generated tokenizer compatibility file
+tokenizer.nopost.json
+
+# ONNX external weights are distributed as a GitHub Release asset
+onnx/voyag-v8.onnx.data
+
+# Editor / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

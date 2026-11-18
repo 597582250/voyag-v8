@@ -1,0 +1,15 @@
+# ---- GPU 环境（NVIDIA）----
+# 锁定 1.23.2：onnxruntime 1.24+ 的 Windows GPU 包不再内置 CUDA/cuDNN DLL，
+# 需要手动安装 CUDA 12.x + cuDNN 9.x 并配置 PATH；1.23.x 配合下面的 NVIDIA
+# pip wheels 开箱即用（详见 README「Runtime & device support」）。
+onnxruntime-gpu==1.23.2
+nvidia-cudnn-cu12>=9.8
+nvidia-cublas-cu12>=12.6
+nvidia-cuda-runtime-cu12>=12.6
+nvidia-cuda-nvrtc-cu12>=12.6
+
+# ---- CPU-only 环境：把上面的 onnxruntime-gpu 换成 onnxruntime，并删掉 nvidia-* 四行 ----
+# onnxruntime>=1.23.0
+
+numpy>=1.26.4
+tokenizers>=0.21

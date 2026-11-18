@@ -1,0 +1,19 @@
+{
+  "name": "voyag-ts",
+  "version": "8.0.0",
+  "description": "Voyag V8 local inference for TypeScript / Node.js (ONNX Runtime + tokenizers.js)",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.3.2",
+    "onnxruntime-node": "1.21.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  },
+  "license": "Apache-2.0"
+}

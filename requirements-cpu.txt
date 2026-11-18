@@ -1,0 +1,5 @@
+# CPU-only environment. This is equivalent to requirements.txt with the GPU
+# runtime and NVIDIA wheels removed; no code changes are required.
+onnxruntime>=1.23.0
+numpy>=1.26.4
+tokenizers>=0.21

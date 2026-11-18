@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="620" fill="#f8fafc"/>
+  <text x="600" y="52" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="#0f172a">Voyag V8 high-level architecture</text>
+  <text x="600" y="80" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#475569">Research release overview; implementation internals are not included</text>
+  <rect x="80" y="150" width="220" height="110" rx="16" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="190" y="190" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="600" fill="#0f172a">Input</text>
+  <text x="190" y="220" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#475569">Utterance + vehicle state</text>
+  <rect x="380" y="150" width="220" height="110" rx="16" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="490" y="190" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="600" fill="#0c4a6e">Shared encoder</text>
+  <text x="490" y="220" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#075985">Multilingual text representation</text>
+  <rect x="680" y="90" width="220" height="110" rx="16" fill="#ffffff" stroke="#334155" stroke-width="2"/>
+  <text x="790" y="125" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="600" fill="#0f172a">Intent slots</text>
+  <text x="790" y="155" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#475569">Vehicle-domain actions</text>
+  <rect x="680" y="240" width="220" height="110" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="790" y="275" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="600" fill="#14532d">Pairwise relation head</text>
+  <text x="790" y="305" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#166534">Parallel / sequential / exclusive</text>
+  <rect x="960" y="150" width="180" height="150" rx="16" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="1050" y="190" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="600" fill="#78350f">Structured output</text>
+  <text x="1050" y="220" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#92400e">Intents</text>
+  <text x="1050" y="245" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#92400e">Relations</text>
+  <text x="1050" y="270" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#92400e">Execution hint</text>
+  <line x1="300" y1="205" x2="372" y2="205" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="600" y1="185" x2="672" y2="145" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="600" y1="225" x2="672" y2="295" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="900" y1="145" x2="952" y2="195" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="900" y1="295" x2="952" y2="245" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="600" y="430" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#475569">High-level view only. This release does not include the network implementation, feature construction, training code, or training data.</text>
+  <text x="600" y="460" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#475569">The diagram is intentionally abstract and is not a specification for reconstructing the model.</text>
+</svg>

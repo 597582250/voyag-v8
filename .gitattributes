@@ -1,0 +1,9 @@
+# Normalize text files; keep model assets as binary.
+* text=auto
+
+*.onnx binary
+*.onnx.data binary
+*.safetensors binary
+*.jsonl text
+*.png binary
+*.jpg binary

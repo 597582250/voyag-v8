@@ -1,0 +1,25 @@
+{
+  "utterance": "读取消息，同时回电给张工",
+  "model": "voyag-v8-onnx",
+  "intents": [
+    ["phone_call", "dial_contact"],
+    ["message", "read_message"]
+  ],
+  "relations": [
+    {
+      "source_id": "phone_call",
+      "target_id": "message",
+      "type": "mutually_exclusive",
+      "confidence": 0.8775
+    }
+  ],
+  "execution_hint": "clarify",
+  "mutex_violations": [
+    {
+      "source_id": "phone_call",
+      "target_id": "message",
+      "type": "mutually_exclusive"
+    }
+  ],
+  "clarification": "检测到互斥意图，请确认先执行哪一个。"
+}

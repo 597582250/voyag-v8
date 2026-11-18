@@ -1,0 +1,122 @@
+{
+  "name": "voyag-v8",
+  "version": "8.0.0",
+  "language": "zh-CN",
+  "license": "Apache-2.0",
+  "model_input": {
+    "max_len": 512,
+    "head_max_len": 256,
+    "num_slots": 10,
+    "num_relation_pairs": 45,
+    "option_layout": "sequential"
+  },
+  "slots": {
+    "window": {
+      "type": "choice",
+      "instructions": "判断用户是否发出车窗控制指令",
+      "criteria": {
+        "none": "没有车窗控制",
+        "open": "打开车窗",
+        "close": "关闭车窗"
+      }
+    },
+    "hvac": {
+      "type": "choice",
+      "instructions": "判断用户是否发出空调控制指令",
+      "criteria": {
+        "none": "没有空调控制",
+        "set_temperature": "设置空调温度",
+        "increase_fan": "增大空调风量",
+        "decrease_fan": "减小空调风量",
+        "defrost": "开启除霜/除雾"
+      }
+    },
+    "media": {
+      "type": "choice",
+      "instructions": "判断用户是否发出媒体播放控制指令",
+      "criteria": {
+        "none": "没有媒体控制",
+        "play_music": "播放音乐",
+        "pause_music": "暂停音乐",
+        "next_track": "播放下一曲"
+      }
+    },
+    "navigation": {
+      "type": "choice",
+      "instructions": "判断用户是否发出导航控制指令",
+      "criteria": {
+        "none": "没有导航控制",
+        "start_navigation": "开始导航",
+        "stop_navigation": "结束导航",
+        "search_along_route": "搜索沿途地点"
+      }
+    },
+    "seat": {
+      "type": "choice",
+      "instructions": "判断用户是否发出座椅控制指令",
+      "criteria": {
+        "none": "没有座椅控制",
+        "heat_on": "打开座椅加热",
+        "heat_off": "关闭座椅加热",
+        "ventilate_on": "打开座椅通风"
+      }
+    },
+    "light": {
+      "type": "choice",
+      "instructions": "判断用户是否发出灯光控制指令",
+      "criteria": {
+        "none": "没有灯光控制",
+        "turn_on": "打开灯光",
+        "turn_off": "关闭灯光"
+      }
+    },
+    "phone_call": {
+      "type": "choice",
+      "instructions": "判断用户是否发出电话控制指令",
+      "criteria": {
+        "none": "没有电话控制",
+        "answer": "接听来电",
+        "hang_up": "挂断电话",
+        "dial_contact": "拨打联系人电话"
+      }
+    },
+    "charging": {
+      "type": "choice",
+      "instructions": "判断用户是否发出充电相关指令",
+      "criteria": {
+        "none": "没有充电控制",
+        "find_charging_station": "寻找充电站",
+        "start_charging": "开始充电"
+      }
+    },
+    "message": {
+      "type": "choice",
+      "instructions": "判断用户是否发出消息控制指令",
+      "criteria": {
+        "none": "没有消息控制",
+        "read_message": "读取消息",
+        "send_message": "发送消息"
+      }
+    },
+    "diagnostic": {
+      "type": "choice",
+      "instructions": "判断用户是否发出车辆诊断指令",
+      "criteria": {
+        "none": "没有诊断控制",
+        "read_dtc": "读取故障码",
+        "run_check": "执行车辆检查"
+      }
+    }
+  },
+  "relation_labels": [
+    "parallel",
+    "sequential",
+    "mutually_exclusive"
+  ],
+  "execution_hints": [
+    "single",
+    "parallel",
+    "sequential",
+    "clarify"
+  ]
+}
