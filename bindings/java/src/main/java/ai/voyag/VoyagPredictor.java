@@ -448,7 +448,11 @@ public final class VoyagPredictor implements AutoCloseable {
 
     @Override
     public void close() {
-        session.close();
+        try {
+            session.close();
+        } catch (OrtException ignored) {
+            // Closing is best-effort; the shared environment must remain open.
+        }
         // OrtEnvironment.getEnvironment() is a shared singleton; never close it.
     }
 }

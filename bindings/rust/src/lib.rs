@@ -143,11 +143,9 @@ impl VoyagPredictor {
             root.join("tokenizer").join("special_tokens_map.json"),
         )?)?;
 
-        let mut tokenizer =
+        let tokenizer =
             Tokenizer::from_file(root.join("tokenizer").join("tokenizer.json"))
                 .map_err(|e| format!("failed to load tokenizer: {e}"))?;
-        // Python uses add_special_tokens=False; drop the post-processor entirely.
-        tokenizer.with_post_processor(None);
 
         let mask_token = special_map["mask_token"]["content"]
             .as_str()
@@ -364,18 +362,10 @@ impl VoyagPredictor {
             "marker_pos" => Tensor::from_array(([rows, max_markers], marker_pos))?,
             "marker_mask" => Tensor::from_array(([rows, max_markers], marker_mask))?,
             "qtype" => Tensor::from_array(([rows], qtype))?,
-        ]?)?;
+        ])?;
 
-        let (intent_tensor, _) = outputs["intent_probabilities"].try_extract_tensor::<f32>()?;
-        let (relation_tensor, _) = outputs["relation_probabilities"].try_extract_tensor::<f32>()?;
-        let intent_prob = intent_tensor.view();
-        let relation_prob = relation_tensor.view();
-        let intent_prob = intent_prob
-            .as_slice()
-            .ok_or("intent_probabilities is not contiguous")?;
-        let relation_prob = relation_prob
-            .as_slice()
-            .ok_or("relation_probabilities is not contiguous")?;
+        let (_, intent_prob) = outputs["intent_probabilities"].try_extract_tensor::<f32>()?;
+        let (_, relation_prob) = outputs["relation_probabilities"].try_extract_tensor::<f32>()?;
 
         let mut active: Map<String, Value> = Map::new();
         let mut intents: Vec<Value> = Vec::new();
