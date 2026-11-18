@@ -103,7 +103,7 @@ public sealed class VoyagPredictor : IDisposable
         return new VoyagPredictor(schema, tokenizer, session, ids.Pad, ids.Cls, ids.Sep, ids.Mask, ids.MaskToken, truncationMax);
     }
 
-    public string Device => _session.SessionMetadata?["ExecutionProvider"] ?? "cpu";
+    public string Device => "cpu";
 
     private static int ReadTruncationMax(string tokenizerPath)
     {
@@ -330,7 +330,7 @@ public sealed class VoyagPredictor : IDisposable
         var intents = new List<string[]>();
         // intent_probabilities is [num_slots, max_options]: each row is padded to
         // the widest slot with zeros. argmax over the full row, exactly like Python.
-        var numCols = intentProb.Length / _slotIds.Length;
+        var numCols = (int)(intentProb.Length / _slotIds.Length);
         for (var slotIndex = 0; slotIndex < _slotIds.Length; slotIndex++)
         {
             var criteria = _schema.RootElement.GetProperty("slots")

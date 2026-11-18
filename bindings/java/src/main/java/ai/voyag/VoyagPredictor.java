@@ -1,6 +1,7 @@
 package ai.voyag;
 
 import ai.onnxruntime.OnnxTensor;
+import ai.onnxruntime.OnnxJavaType;
 import ai.onnxruntime.OrtEnvironment;
 import ai.onnxruntime.OrtException;
 import ai.onnxruntime.OrtSession;
@@ -14,6 +15,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.FloatBuffer;
+import java.nio.ByteBuffer;
+import java.nio.LongBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -326,16 +329,21 @@ public final class VoyagPredictor implements AutoCloseable {
         }
 
         Map<String, OnnxTensor> inputs = new HashMap<>();
+        byte[] markerMaskBytes = new byte[markerMask.length];
+        for (int i = 0; i < markerMask.length; i++) {
+            markerMaskBytes[i] = markerMask[i] ? (byte) 1 : (byte) 0;
+        }
         inputs.put("input_ids",
-                OnnxTensor.createTensor(env, inputIds, new long[]{rows, maxLen}));
+                OnnxTensor.createTensor(env, LongBuffer.wrap(inputIds), new long[]{rows, maxLen}));
         inputs.put("attention_mask",
-                OnnxTensor.createTensor(env, attentionMask, new long[]{rows, maxLen}));
+                OnnxTensor.createTensor(env, LongBuffer.wrap(attentionMask), new long[]{rows, maxLen}));
         inputs.put("marker_pos",
-                OnnxTensor.createTensor(env, markerPos, new long[]{rows, maxMarkers}));
+                OnnxTensor.createTensor(env, LongBuffer.wrap(markerPos), new long[]{rows, maxMarkers}));
         inputs.put("marker_mask",
-                OnnxTensor.createTensor(env, markerMask, new long[]{rows, maxMarkers}));
+                OnnxTensor.createTensor(env, ByteBuffer.wrap(markerMaskBytes),
+                        new long[]{rows, maxMarkers}, OnnxJavaType.BOOL));
         inputs.put("qtype",
-                OnnxTensor.createTensor(env, qtype, new long[]{rows}));
+                OnnxTensor.createTensor(env, LongBuffer.wrap(qtype), new long[]{rows}));
         return inputs;
     }
 

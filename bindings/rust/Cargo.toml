@@ -11,7 +11,7 @@ license = "Apache-2.0"
 tokenizers = { version = "0.21", default-features = false, features = ["onig"] }
 # ONNX Runtime bindings; default features download the prebuilt runtime at build
 # time. Build on Windows/Linux/macOS with plain `cargo build --release`.
-ort = { version = "2.0.0-rc.10" }
+ort = { version = "=2.0.0-rc.10" }
 # preserve_order keeps schema slot/criteria order identical to the JSON file,
 # which is required for tokenization parity with Python.
 serde_json = { version = "1", features = ["preserve_order"] }
