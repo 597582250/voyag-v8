@@ -69,8 +69,14 @@ DLL，需要手动安装 CUDA Toolkit 12.x + cuDNN 9.x 并配置 PATH。锁定 1
 
 ### 安装（CPU-only）
 
-把 `onnxruntime-gpu` 换成 `onnxruntime>=1.23.0`、删掉四个 `nvidia-*`
-依赖即可，代码无需改动。
+安装 CPU-only 依赖文件：
+
+```bash
+pip install -r requirements-cpu.txt
+```
+
+该文件等价于把 `requirements.txt` 中的 `onnxruntime-gpu` 替换为
+`onnxruntime>=1.23.0`，并删除四个 `nvidia-*` 依赖；代码无需改动。
 
 ### 性能参考（2026-11-18 / 2026-11-19 实测）
 

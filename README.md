@@ -83,8 +83,15 @@ pip wheels works out of the box, with no NVIDIA-account downloads required.
 
 ### Installation (CPU-only)
 
-Replace `onnxruntime-gpu` with `onnxruntime>=1.23.0` and drop the four
-`nvidia-*` dependencies; no code changes needed.
+Install the CPU-only requirements file:
+
+```bash
+pip install -r requirements-cpu.txt
+```
+
+This is equivalent to `requirements.txt` with `onnxruntime-gpu` replaced by
+`onnxruntime>=1.23.0` and the four `nvidia-*` dependencies removed; no code
+changes are needed.
 
 ### Performance reference (measured 2026-11-18 / 2026-11-19)
 
