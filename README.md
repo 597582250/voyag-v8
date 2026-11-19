@@ -86,22 +86,23 @@ pip wheels works out of the box, with no NVIDIA-account downloads required.
 Replace `onnxruntime-gpu` with `onnxruntime>=1.23.0` and drop the four
 `nvidia-*` dependencies; no code changes needed.
 
-### Performance reference (measured 2026-11-18)
+### Performance reference (measured 2026-11-18 / 2026-11-19)
 
-Same machine for every number below: Intel Core i9-13900HX (24C/32T) with
-32 GB RAM + NVIDIA RTX 4080 Laptop 12 GB, onnxruntime-gpu 1.23.2, Windows.
-The CPU column uses the CPU execution provider with default (auto) intra-op
-threads; the GPU column uses the CUDA execution provider. The ranges below are
-from repeated alternating runs, with steady-state latency averaged over the
-runs:
+The ONNX release uses onnxruntime-gpu 1.23.2 on NVIDIA RTX 4080 Laptop 12 GB.
 
-| Stage | CPU (CPU EP) | GPU (CUDA EP) |
+| Stage | GPU (CUDA EP) |
+| --- | --- |
+| Model load | 2.4 s |
+| First inference (incl. warm-up) | 0.7 s |
+| Steady-state single inference | ~0.18 s |
+
+The same V8 model was re-verified on 2026-11-19 with the PyTorch release
+package on the same host:
+
+| Stage | GPU | CPU |
 | --- | --- | --- |
-| Model load | 2.4-3.8s | 3.8-11.6s |
-| First inference (5 utterances, incl. warm-up) | 33-46s | 1.5-2.5s |
-| Steady-state single inference | 6.7-8.6s | 0.19-0.21s |
-
-Measured GPU steady-state is about 38x faster than CPU.
+| Steady-state single inference | 75-268 ms (median ~150 ms) | 1.6-2.1 s |
+| GPU / CPU speedup | ~12x | |
 
 Notes:
 
